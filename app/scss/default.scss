@@ -1,0 +1,41 @@
+@import 'https://fonts.googleapis.com/css?family=Droid+Sans|Source+Sans+Pro';
+
+body{
+  background-color: #000;
+  color:#fefefe;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+h1{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bolder;
+  font-size: 2em;
+  margin-bottom: 20px
+}
+
+h2{
+  font-size: 1.5em;
+  margin-bottom: 20px
+}
+p{
+  font-size: 1em;
+  line-height: 25px;
+}
+
+nav ul{
+  border:1px solid #000;
+  height:50px;
+  list-style: none;
+  li{
+    float:left;
+    margin:15px;
+  }
+}
+
+
+.inner{
+  width:960px;
+
+  margin-left:auto;
+  margin-right: auto;
+}
