@@ -101,18 +101,24 @@ var Source = function (_BaseController) {
   _createClass(Source, [{
     key: "index",
     value: function index() {
+      var NextPageURL = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+
       var scope = this;
-      this.ajaxGet("http://rssly.codejungle.org/api/1/sources/").then(JSON.parse).then(function (res) {
 
-        res.data.forEach(function (key, val) {
+      if (!NextPageURL) NextPageURL = "http://rssly.codejungle.org/api/1/sources/";
 
-          scope.assign("headline", key.attributes.name);
-          scope.assign("link", key.attributes.link);
-        });
+      this.ajaxGet(NextPageURL).then(JSON.parse).then(function (res) {
+        console.log(res);
 
-        scope.assign("author", "Andreas");
-
-        this.render("item");
+        //assign key / val to template
+        scope.assign("data", res.results);
+        //render template
+        scope.render("item");
+        //data binding example
+        jQuery("#next").click(function () {
+          //run index again with different NextPageURL
+          this.index(res.next);
+        }.bind(this));
       }.bind(scope)).catch(function (error) {
         console.log(error);
       });
@@ -121,6 +127,9 @@ var Source = function (_BaseController) {
 
   return Source;
 }(BaseController);
+
+//@todo routing (url / controller mapping)
+
 
 var run = new Source();
 run.index();

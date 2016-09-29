@@ -6,21 +6,27 @@ class Source extends BaseController
       super();
 
     }
-    index(){
+    index(NextPageURL=false){
       var scope = this
-      this.ajaxGet("http://rssly.codejungle.org/api/1/sources/")
+
+      if(!NextPageURL)
+        NextPageURL="http://rssly.codejungle.org/api/1/sources/";
+
+      this.ajaxGet(NextPageURL)
       .then(JSON.parse)
       .then(function(res){
+        console.log(res);
 
-        res.data.forEach(function (key,val) {
-        
-            scope.assign("headline", key.attributes.name)
-            scope.assign("link", key.attributes.link)
-        });
+        //assign key / val to template
+        scope.assign("data", res.results)
+        //render template
+        scope.render("item")
+        //data binding example
+        jQuery("#next").click(function(){
+            //run index again with different NextPageURL
+            this.index(res.next);
+        }.bind(this))
 
-        scope.assign("author", "Andreas")
-
-        this.render("item")
       }.bind(scope))
       .catch(function(error) { console.log(error); });
 
@@ -28,6 +34,6 @@ class Source extends BaseController
     }
 }
 
-
+//@todo routing (url / controller mapping)
 var run = new Source();
 run.index()

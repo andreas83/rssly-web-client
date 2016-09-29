@@ -1,7 +1,19 @@
-<div class="news-item">
-  <h1>{{headline}}</h1>
-  <h2>{{subline}}</h2>
-  <div>Author:Test </div>
 
-  <p>{{link}}</p>
+<a href="#" id="next">Next</a>
+
+
+{{#each data}}
+<div class="news-item">
+  <h1>{{name}}</h1>
+  <img src="{{image}}" />
+  <p>{{description}}
+  <a href="{{link}}">{{link}}</a>
+  <div class="detail">
+  {{#each source}}
+    <div class="detail-item">
+      {{{description}}}
+    </div>
+  {{/each}}
+  </div>
 </div>
+{{/each}}

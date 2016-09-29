@@ -173,8 +173,51 @@ nav ul li {
   margin: 15px;
 }
 
+#next {
+  padding: 10px;
+  width: 200px;
+  display: block;
+  border: 10px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  font-size: 2em;
+  color: #000;
+  border: 1px solid;
+  text-decoration: none;
+}
+
+#next::hover {
+  color: #000;
+}
+
 .inner {
   width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inner .news-item {
+  cursor: pointer;
+}
+
+.inner .news-item .detail {
+  height: 400px;
+  overflow: auto;
+  display: block;
+  background-color: #fefefe;
+}
+
+.inner .news-item .detail .detail-item {
+  display: inline-block;
+  margin: 15px;
+  color: #000;
+}
+
+.inner .news-item .detail .detail-item p {
+  display: inline-flex;
+}
+
+.inner .news-item .detail img {
   margin-left: auto;
   margin-right: auto;
 }

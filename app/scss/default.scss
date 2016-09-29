@@ -33,10 +33,51 @@ nav ul{
   }
 }
 
+#next{
+  padding:10px;
+  width:200px;
+  display: block;
+  border:10px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  font-size: 2em;
+  color:#000;
+  border:1px solid;
+  text-decoration: none;
+  &::hover{
+    color:#000;
+  }
+}
 
 .inner{
   width:960px;
 
   margin-left:auto;
   margin-right: auto;
+
+  .news-item {
+
+
+    cursor: pointer;
+
+    .detail{
+      height:400px;
+      overflow: auto;
+      display:block;
+      background-color: #fefefe;
+      .detail-item{
+        display: inline-block;
+        margin:15px;
+        color:#000;
+        p{
+          display: inline-flex;
+        }
+      }
+      img{
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    }
+  }
 }
