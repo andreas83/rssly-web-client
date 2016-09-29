@@ -6,6 +6,10 @@ var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
 var concat = require("gulp-concat");
 
+var handlebars = require('gulp-handlebars');
+var wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
+
 
 gulp.task('serve', ['sass'], function() {
 
@@ -13,6 +17,7 @@ gulp.task('serve', ['sass'], function() {
         server: "./app"
     });
 
+    gulp.watch("app/src/template/*.hbs", ['templates']);
     gulp.watch("app/scss/*.scss", ['sass']);
     gulp.watch("app/src/**/*.js", ['js']);
     gulp.watch("app/index.html").on('change', browserSync.reload);
@@ -29,7 +34,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task("js", function () {
-  return gulp.src("app/src/**/*.js")
+  return gulp.src([ "app/src/**/*.js"])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat("bundle.js"))
@@ -37,5 +42,22 @@ gulp.task("js", function () {
     .pipe(gulp.dest("app/js"))
     .pipe(browserSync.stream());
 });
+
+gulp.task('templates', function(){
+  gulp.src('app/src/template/*.hbs')
+    .pipe(handlebars({
+      handlebars: require('handlebars')
+    }))
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'rssly.templates',
+      noRedeclare: true, // Avoid duplicate declarations
+    }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('app/js/'))
+    .pipe(browserSync.stream());
+});
+
+
 
 gulp.task('default', ['serve']);
