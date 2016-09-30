@@ -1,19 +1,19 @@
 
-<a href="#" id="next">Next</a>
+<a href="#" class="btn-lg" id="prev">< Prev </a>
+<a href="#" class="btn-lg" id="next">Next ></a>
 
 
 {{#each data}}
 <div class="news-item">
-  <h1>{{name}}</h1>
-  <img src="{{image}}" />
-  <p>{{description}}
-  <a href="{{link}}">{{link}}</a>
-  <div class="detail">
-  {{#each source}}
-    <div class="detail-item">
-      {{{description}}}
-    </div>
-  {{/each}}
+  <div>
+    <img src="{{image}}" />
+    <h1>{{name}}</h1>
+
+    <button class="follow-btn" data-id="{{id}}">Folow</button>
+    <button class="follow-btn" data-id="{{id}}">Read latest</button>
   </div>
+  <p>{{description}}</p>
+  <a href="{{link}}">{{link}}</a>
+
 </div>
 {{/each}}

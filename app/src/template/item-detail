@@ -1,0 +1,7 @@
+<div class="detail">
+{{#each source}}
+  <div class="detail-item">
+    {{{description}}}
+  </div>
+{{/each}}
+</div>

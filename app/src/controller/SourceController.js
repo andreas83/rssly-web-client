@@ -10,12 +10,12 @@ class Source extends BaseController
       var scope = this
 
       if(!NextPageURL)
-        NextPageURL="http://rssly.codejungle.org/api/1/sources/";
+        NextPageURL="http://rssly.codejungle.org/api/1/sources/?language=de";
 
       this.ajaxGet(NextPageURL)
       .then(JSON.parse)
       .then(function(res){
-        console.log(res);
+        console.log(res.results);
 
         //assign key / val to template
         scope.assign("data", res.results)
@@ -25,6 +25,11 @@ class Source extends BaseController
         jQuery("#next").click(function(){
             //run index again with different NextPageURL
             this.index(res.next);
+        }.bind(this))
+
+        jQuery("#prev").click(function(){
+            //run index again with different NextPageURL
+            this.index(res.prev);
         }.bind(this))
 
       }.bind(scope))

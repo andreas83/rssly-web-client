@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Droid+Sans|Source+Sans+Pro';
 
 body{
-  background-color: #000;
+  background-color: #f2f2f2;
   color:#fefefe;
   font-family: 'Droid Sans', sans-serif;
 }
@@ -23,17 +23,12 @@ p{
   line-height: 25px;
 }
 
-nav ul{
-  border:1px solid #000;
-  height:50px;
-  list-style: none;
-  li{
-    float:left;
-    margin:15px;
-  }
+img[src='Error.src']{
+    display: none;
 }
 
-#next{
+
+.btn-lg{
   padding:10px;
   width:200px;
   display: block;
@@ -49,16 +44,45 @@ nav ul{
   }
 }
 
+
+* {margin: 0; padding: 0;}
+body {background: #333;}
+
+
+
+
+#prev{
+  margin-right: auto;
+  margin-left: 0;
+  float:left;
+}
+#next{
+  margin-right: 0px;
+  margin-left: auto;
+}
+
 .inner{
   width:960px;
-
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
   margin-left:auto;
   margin-right: auto;
 
   .news-item {
 
-
+    border:1px solid #ccc;
+    background-color: #e6e6e6;
+    color: #1a1a1a;
     cursor: pointer;
+    width:100%;
+    display:inline-block;
+    img{
+      float:left;
+
+      max-width: 100px;
+      max-height: 100px;
+      margin-right:15px;
+    }
+
 
     .detail{
       height:400px;

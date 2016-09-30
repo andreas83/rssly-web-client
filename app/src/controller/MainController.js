@@ -1,0 +1,6 @@
+
+class MainController extends BaseController
+{
+
+
+}
